@@ -1,6 +1,7 @@
 package net.CABABO2000.tc;
 
 import net.CABABO2000.tc.block.ModBlocks;
+import net.CABABO2000.tc.entity.ModEntityTypes;
 import net.CABABO2000.tc.item.ModItems;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -39,6 +40,7 @@ public class tc {
 
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
+        ModEntityTypes.register(eventBus);
 
         eventBus.addListener(this::setup);
     }
