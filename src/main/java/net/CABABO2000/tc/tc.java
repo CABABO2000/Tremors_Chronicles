@@ -1,6 +1,7 @@
 package net.CABABO2000.tc;
 
-import net.CABABO2000.tc.entity.ModEntityTypes;
+import net.CABABO2000.tc.block.ModBlocks;
+import net.CABABO2000.tc.item.ModItems;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -18,7 +19,6 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import software.bernie.geckolib3.GeckoLib;
 
 import java.util.stream.Collectors;
 
@@ -37,10 +37,10 @@ public class tc {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        eventBus.addListener(this::setup);
-        ModEntityTypes.register(eventBus);
+        ModItems.register(eventBus);
+        ModBlocks.register(eventBus);
 
-        GeckoLib.initialize();
+        eventBus.addListener(this::setup);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
