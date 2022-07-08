@@ -15,7 +15,7 @@ public class ModEntityTypes {
             DeferredRegister.create(ForgeRegistries.ENTITIES, tc.MOD_ID);
 
     public static final RegistryObject<EntityType<JrowEntity>> JROW = ENTITY_TYPES.register("jrow",
-            () -> EntityType.Builder.of(JrowEntity::new, MobCategory.MONSTER)
+            () -> EntityType.Builder.of(JrowEntity::new, MobCategory.MISC)
                     .sized(0.8f, 0.6f)
                     .build(new ResourceLocation(tc.MOD_ID, "jrow").toString()));
 
