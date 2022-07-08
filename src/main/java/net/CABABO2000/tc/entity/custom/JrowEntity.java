@@ -7,11 +7,11 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomFlyingGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.FlyingAnimal;
 import net.minecraft.world.entity.animal.IronGolem;
-import net.minecraft.world.entity.animal.Parrot;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
@@ -35,19 +35,20 @@ public class JrowEntity extends Monster implements IAnimatable, FlyingAnimal {
     }
 
     public static AttributeSupplier setAttributes() {
-        return Monster.createMobAttributes()
+        return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, 7.0D)
                 .add(Attributes.ATTACK_DAMAGE, 6.0f)
                 .add(Attributes.ATTACK_SPEED, 2.0f)
                 .add(Attributes.ATTACK_KNOCKBACK, 0.0f)
-                .add(Attributes.FLYING_SPEED, 0.3f).build();
+                .add(Attributes.MOVEMENT_SPEED, 2.0D)
+                .add(Attributes.FLYING_SPEED, 2.0D).build();
     }
 
     @Override
     protected void registerGoals() {
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers(JrowEntity.class));
+        this.targetSelector.addGoal(6, new WaterAvoidingRandomFlyingGoal(this, 0));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Zombie.class, true));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, ZombifiedPiglin.class, true));
