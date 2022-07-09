@@ -29,7 +29,7 @@ public class JrowEntity extends FlyingMob implements IAnimatable, FlyingAnimal {
         public static AttributeSupplier setAttributes() {
         return FlyingMob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 7.0D)
-                .add(Attributes.ATTACK_DAMAGE, 6.0f)
+                .add(Attributes.ATTACK_DAMAGE, 5.0f)
                 .add(Attributes.ATTACK_SPEED, 2.0f)
                 .add(Attributes.ATTACK_KNOCKBACK, 0.0f)
                 .add(Attributes.MOVEMENT_SPEED, 0.2D)
